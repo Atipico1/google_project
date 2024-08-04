@@ -1,6 +1,6 @@
 from langchain_core.tools import tool
 import wikipediaapi
-from langchain_upstage import ChatUpstage
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 @tool
 def similar_art_search(query: str) -> str:
@@ -31,7 +31,8 @@ def wiki_search(query: str) -> str:
     """미술 작품에 대한 정보를 위키피디아에서 검색하여 제공합니다. 사용자가 미술 작품에 대한 전문적인 정보를 상세하고 구체적으로 알고 싶어 하는 경우에 호출합니다.
     """
     from ast import literal_eval
-    llm = ChatUpstage()
+    #llm = ChatUpstage()
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
     prompt = "아래는 유저가 검색을 하고 싶어하는 내용입니다. 아래 검색 내용에서 핵심 단어 1개만 추출해서 key는 '키워드', value는 핵심단어의 형태로 JSON으로만 출력해주세요. 키워드는 위키피디아에 있는 엔티티여야 합니다.\n검색 내용: {user}\n\n요약 내용:\n"
     prompt = "아래는 유저의 질문 내용입니다. 질문에서 검색을 위한 핵심 단어 1개만 답해주세요. 핵심 단어는 키워드는 위키피디아에 있는 엔티티여야 합니다. 코드를 사용하거나 다른 답변을 하지말고 바로 핵심 단어만 대답해야 합니다.\n검색 내용: {user}\n\n핵심 단어:\n"
     input_prompt = prompt.format(user=query)

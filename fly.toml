@@ -11,6 +11,8 @@ primary_region = 'sin'
 
 [env]
   PORT = '7860'
+  GOOGLE_API_KEY = 'AIzaSyAME6hNA81PSYx1ThPbNc8UKnNJQfovBSU'
+  UPSTAGE_API_KEY = 'up_ps3sghU2P7szwsVZHshLvuXmmtxEw'
 
 [http_service]
   internal_port = 7860
@@ -21,6 +23,6 @@ primary_region = 'sin'
   processes = ['app']
 
 [[vm]]
-  memory = '1gb'
+  memory = '8gb'
   cpu_kind = 'shared'
-  cpus = 1
+  cpus = 2

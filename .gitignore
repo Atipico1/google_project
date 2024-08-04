@@ -5,6 +5,10 @@
 
 __pycache__/*
 chroma_db/
+Dockerfile
+fly.toml
+gr_test.py
+Procfile
 
 # data
 # data/*

@@ -12,14 +12,11 @@ from PIL import Image, ImageOps
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.output_parsers import StrOutputParser
 from langchain.schema import AIMessage, HumanMessage
-#from langchain_upstage import ChatUpstage
 from langchain_google_genai import ChatGoogleGenerativeAI
 from tools import similar_art_search, qa_with_explain, empathize_with_user, normal_chat, wiki_search, archiving
-from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
-#llm = ChatUpstage(streaming=True)
 
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
 tools = [similar_art_search, qa_with_explain, empathize_with_user, normal_chat, wiki_search, archiving]
@@ -456,27 +453,6 @@ with gr.Blocks(title="DocentAI", css=css, theme=gr.themes.Soft()) as demo:
 
             with gr.Column():
                 art_image = gr.Image(value=None, label="작품 이미지", scale=1)
-
-        
-        
-        # with gr.Row() as chatbot_art:
-        #     with gr.Column(scale=1):
-        #         # state = gr.State()
-        #         chatbot = gr.ChatInterface(
-        #             chat,
-        #             # examples=[
-        #             #     "How to eat healthy?",
-        #             #     "Best Places in Korea",
-        #             #     "How to make a chatbot?",
-        #             # ],
-        #             additional_inputs=[cur_search_art_tb],
-        #             title="Solar Chatbot",
-        #             description="Upstage Solar Chatbot",
-        #             autofocus=False
-        #         )
-        #         chatbot.chatbot.height = 600
-        #     with gr.Column(scale=1):
-        #         art_image = gr.Image(value=None, label="Art Image")
         
         search_btn.click(
             fn=search_art, 
