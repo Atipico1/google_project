@@ -12,13 +12,16 @@ from PIL import Image, ImageOps
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.output_parsers import StrOutputParser
 from langchain.schema import AIMessage, HumanMessage
-from langchain_upstage import ChatUpstage
+#from langchain_upstage import ChatUpstage
+from langchain_google_genai import ChatGoogleGenerativeAI
 from tools import similar_art_search, qa_with_explain, empathize_with_user, normal_chat, wiki_search, archiving
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
-llm = ChatUpstage(streaming=True)
+#llm = ChatUpstage(streaming=True)
+
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
 tools = [similar_art_search, qa_with_explain, empathize_with_user, normal_chat, wiki_search, archiving]
 llm_with_tools = llm.bind_tools(tools)
 
@@ -497,4 +500,4 @@ with gr.Blocks(title="DocentAI", css=css, theme=gr.themes.Soft()) as demo:
             outputs=[change_art_to_sim_btn]
         )
 
-demo.launch()
+demo.launch(share=True)
