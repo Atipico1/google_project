@@ -4,6 +4,13 @@
 Gemini API를 활용하여 미술 작품에 대해 궁금한 점을 질의 응답할 수 있는 대화형 AI 구현
 
 ### Usage
+가상환경 생성 후 dependency를 설치합니다
+```
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
 .env 파일을 생성하여 UPSTAGE_API_KEY의 환경변수에 API키를 설정합니다.
 ```
 GOOGLE_API_KEY=
